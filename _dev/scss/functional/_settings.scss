@@ -1,0 +1,41 @@
+/* ~-------------------------------------~*/
+/// Colors
+/* ~-------------------------------------~*/
+$white: #ffffff;
+$black: #000000;
+$green: #00fa87;
+$blue: #1dbfe0;
+$light-gray: #E4E4E4;
+$dark-gray: #1c1d1e;
+$darkest-gray: #151515;
+
+$color-primary: #1dbfe0;
+$color-secondary: #00fa87;
+
+/* ~-------------------------------------~*/
+/// Breakpoints
+/* ~-------------------------------------~*/
+$phone-sm: 375px;
+$phone-md: 480px;
+$phone-lg: 600px;
+
+$tablet-sm: 768px;
+$tablet-md: 900px;
+$tablet-lg: 1024px;
+
+$desktop-sm: 1200px;
+$desktop-md: 1600px;
+$desktop-lg: 1800px;
+
+/* ~-------------------------------------~*/
+/// Spacing
+/* ~-------------------------------------~*/
+$gutter-sm: 10px;
+$gutter-md: 20px;
+$gutter-lg: 30px;
+
+/* ~-------------------------------------~*/
+/// Other
+/* ~-------------------------------------~*/
+.not-loaded { color: rgb(144, 30, 30); }
+.is-loaded { color: rgb(5, 142, 76); }
