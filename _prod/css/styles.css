@@ -586,7 +586,7 @@ sup {
 /* ~-------------------------------------~*/
 body {
   -webkit-font-smoothing: antialiased;
-  background: #ffffff;
+  background: #000000;
   overflow-x: hidden;
   width: 100%;
   font-family: "Source Sans Pro", arial, sans-serif;
@@ -597,14 +597,17 @@ body {
           box-sizing: border-box; }
 
 h1, h2, h3, h4 {
-  font-weight: 700; }
+  font-weight: 700;
+  color: #ffffff; }
 
 h2 {
   margin: 10px 0; }
 
 p {
   margin: 10px 0;
-  font-weight: 400; }
+  font-size: 18px;
+  font-weight: 400;
+  color: #ffffff; }
 
 a {
   color: #00fa87;
@@ -632,14 +635,32 @@ a {
   width: 100%;
   margin: 0 auto; }
 
+#hidden-overlay-l, #hidden-overlay-r {
+  position: fixed;
+  width: 50%;
+  height: 100vh;
+  -webkit-transition: width 2s ease-out;
+  transition: width 2s ease-out;
+  z-index: 1000;
+  cursor: pointer; }
+  #hidden-overlay-l:hover, #hidden-overlay-r:hover {
+    width: 60%; }
+
+#hidden-overlay-l {
+  top: 0;
+  left: 0; }
+
+#hidden-overlay-r {
+  top: 0;
+  right: 0; }
+
 #left-side, #right-side {
   position: relative;
   width: 50%;
   height: 100vh;
+  min-height: 100vh;
   -webkit-transition: width 2s ease-out;
   transition: width 2s ease-out; }
-  #left-side:hover, #right-side:hover {
-    width: 60%; }
   #left-side h1, #right-side h1 {
     position: absolute;
     top: 50%;
@@ -649,7 +670,36 @@ a {
     font-weight: normal;
     color: #ffffff;
     text-align: center;
-    text-shadow: 0px 0px 25px rgba(0, 0, 0, 0.7); }
+    text-shadow: 0px 0px 25px rgba(0, 0, 0, 0.7);
+    -webkit-transition: all .8s ease-out;
+    transition: all .8s ease-out;
+    z-index: 2; }
+  #left-side .following-content, #right-side .following-content {
+    display: none;
+    position: relative;
+    max-width: 900px;
+    padding-top: 100px;
+    padding: 100px 20px;
+    margin: 0px auto;
+    overflow: hidden;
+    z-index: 1;
+    opacity: 0;
+    -webkit-transition: all .8s ease-out;
+    transition: all .8s ease-out; }
+    #left-side .following-content img, #right-side .following-content img {
+      display: block;
+      max-width: 100%;
+      margin: 20px auto; }
+  #left-side.initiated, #right-side.initiated {
+    background-attachment: fixed; }
+    #left-side.initiated h1, #right-side.initiated h1 {
+      top: 0;
+      margin-top: 50px;
+      font-size: 55px; }
+    #left-side.initiated .following-content, #right-side.initiated .following-content {
+      opacity: 1; }
+    #left-side.initiated .lights, #right-side.initiated .lights {
+      position: fixed; }
 
 #left-side {
   background: url(../img/bg-disco.jpg) no-repeat;
@@ -659,23 +709,32 @@ a {
     font-family: "Monoton", cursive; }
 
 #right-side {
+  position: relative;
   background: url(../img/bg-funk.jpg) no-repeat;
   background-size: cover;
-  background-position: top center; }
+  background-position: top center;
+  z-index: 5; }
   #right-side h1 {
     font-family: "Bungee Inline", cursive; }
+
+.lights {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  -webkit-transition: all 2s ease-out;
+  transition: all 2s ease-out; }
 
 .initial-content {
   position: relative;
   width: 100%;
-  height: 100vh;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.8);
   -webkit-transition: all .4s ease-out;
   transition: all .4s ease-out;
-  cursor: pointer; }
-  .initial-content:hover {
-    background: rgba(0, 0, 0, 0.3); }
+  z-index: 2; }
 
 .vs {
   display: block;
@@ -689,3 +748,31 @@ a {
   text-align: center;
   z-index: 10;
   text-shadow: 0px 0px 25px rgba(0, 0, 0, 0.7); }
+
+.switch-sides {
+  display: none;
+  position: fixed;
+  top: 50%;
+  right: -39px;
+  margin-top: -65px;
+  padding: 10px 20px 10px;
+  z-index: 10;
+  -webkit-transform: rotateZ(90deg);
+          transform: rotateZ(90deg);
+  text-transform: uppercase;
+  font-size: 35px;
+  font-family: "Bungee Inline", cursive;
+  background-color: #ffffff;
+  border: 0; }
+  .switch-sides:hover {
+    opacity: 1;
+    color: #ffffff;
+    background-color: #000000; }
+  .switch-sides:focus {
+    outline: none; }
+
+#go-to-left {
+  right: initial;
+  left: -42px;
+  font-family: "Monoton", cursive;
+  font-size: 30px; }

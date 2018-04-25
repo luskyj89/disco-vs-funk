@@ -23,14 +23,14 @@
 /* ~-------------------------------------~*/
 /// Global Vars
 /* ~-------------------------------------~*/
-$w: $desktop-sm;
+$w: $tablet-md;
 
 /* ~-------------------------------------~*/
 /// Global Styles
 /* ~-------------------------------------~*/
 body {
     -webkit-font-smoothing: antialiased;
-    background: $white;
+    background: $black;
     overflow-x: hidden;
     width: 100%;
     font-family: $font-primary;
@@ -43,6 +43,7 @@ body {
 
 h1, h2, h3, h4 {
     font-weight: 700;
+    color: $white;
 }
 
 h2 {
@@ -51,7 +52,9 @@ h2 {
 
 p {
     margin: $gutter-sm 0;
+    font-size: 18px;
     font-weight: 400;
+    color: $white;
 }
 
 a {
@@ -86,15 +89,35 @@ a {
     margin: 0 auto;
 }
 
-#left-side, #right-side {
-    position: relative;
+#hidden-overlay-l, #hidden-overlay-r {
+    position: fixed;
     width: 50%;
     height: 100vh;
     transition: width 2s ease-out;
+    z-index: 1000;
+    cursor: pointer;
 
     &:hover {
         width: 60%;
     }
+}
+
+#hidden-overlay-l {
+    top: 0;
+    left: 0;
+}
+
+#hidden-overlay-r {
+    top: 0;
+    right: 0;
+}
+
+#left-side, #right-side {
+    position: relative;
+    width: 50%;
+    height: 100vh;
+    min-height: 100vh;
+    transition: width 2s ease-out;
 
     h1 {
         position: absolute;
@@ -106,11 +129,49 @@ a {
         color: $white;
         text-align: center;
         text-shadow: 0px 0px 25px rgba(0, 0, 0, 0.70);
+        transition: all .8s ease-out;
+        z-index: 2;
+    }
+
+    .following-content {
+        display: none;
+        position: relative;
+        max-width: $w;
+        padding-top: 100px;
+        padding: 100px $gutter-md;
+        margin: 0px auto;
+        overflow: hidden;
+        z-index: 1;
+        opacity: 0;
+        transition: all .8s ease-out;
+
+        img {
+            display: block;
+            max-width: 100%;
+            margin: $gutter-md auto;
+        }
+    }
+
+    &.initiated {
+        background-attachment: fixed;
+
+        h1 {
+            top: 0;
+            margin-top: 50px;
+            font-size: 55px;
+        }
+
+        .following-content {
+            opacity: 1;
+        }
+
+        .lights {
+            position: fixed;
+        }
     }
 }
 
 #left-side {
-    //border-right: 5px solid $white;
     background: url(../img/bg-disco.jpg) no-repeat;
     background-size: cover;
     background-position: top center;
@@ -121,28 +182,34 @@ a {
 }
 
 #right-side {
-    //border-left: 5px solid $white;
+    position: relative;
     background: url(../img/bg-funk.jpg) no-repeat;
     background-size: cover;
     background-position: top center;
+    z-index: 5;
 
     h1 {
         font-family: $font-funk;
     }
 }
 
+.lights {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    transition: all 2s ease-out;
+}
+
 .initial-content {
     position: relative;
     width: 100%;
-    height: 100vh;
     padding: $gutter-md;
-    background: rgba(0, 0, 0, 0.8);
     transition: all .4s ease-out;
-    cursor: pointer;
-
-    &:hover {
-        background: rgba(0, 0, 0, 0.30);
-    }
+    z-index: 2;
 }
 
 .vs {
@@ -157,4 +224,38 @@ a {
     text-align: center;
     z-index: 10;
     text-shadow: 0px 0px 25px rgba(0, 0, 0, 0.70);
+}
+
+.switch-sides {
+    display: none;
+    position: fixed;
+    top: 50%;
+    right: -39px;
+    margin-top: -65px;
+    padding: $gutter-sm $gutter-md $gutter-sm;
+    z-index: 10;
+    transform: rotateZ(90deg);
+    text-transform: uppercase;
+    font-size: 35px;
+    font-family: $font-funk;
+    background-color: $white;
+    border: 0;
+
+    &:hover {
+        opacity: 1;
+        color: $white;
+        background-color: $black;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+}
+
+#go-to-left {
+    right: initial;
+    left: -42px;
+    font-family: $font-disco;
+    font-size: 30px;
 }
