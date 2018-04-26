@@ -12,6 +12,8 @@ var lights = $(".lights");
 var vs = $(".vs");
 var goToRight = $("#go-to-right");
 var goToLeft = $("#go-to-left");
+var intro = $("#introduction");
+var panelClose = $(".panel-close");
 
 /* ~-------------------------------------~*/
 /// Public Functions
@@ -25,6 +27,7 @@ function enterLeft() {
     leftO.remove();
     rightO.remove();
     vs.fadeOut();
+    intro.fadeOut();
 
     // Expand the called side, retract the opposite
     left.css("width", "100%");
@@ -51,6 +54,7 @@ function enterRight() {
     rightO.remove();
     leftO.remove();
     vs.fadeOut();
+    intro.fadeOut();
 
     // Expand the called side, retract the opposite
     right.css("width", "100%");
@@ -152,12 +156,18 @@ function init() {
         right.find(lights).css("background-color", "rgba(0, 0, 0, 0.8)");
     });
 
+    // Handles modal close button
+    panelClose.on("click", function() {
+        intro.fadeOut();
+    });
+
     // Element event listenters
     leftO.on("click", enterLeft);
     rightO.on("click", enterRight);
 
     goToRight.on("click", switchToRight);
     goToLeft.on("click", switchToLeft);
+
 
 }
 
