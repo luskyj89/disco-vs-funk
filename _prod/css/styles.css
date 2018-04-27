@@ -3,6 +3,44 @@
  */
 /* ~-------------------------------------~*/
 /* ~-------------------------------------~*/
+@font-face {
+  font-family: 'icon';
+  src: url("../fonts/icon.eot?ea3yic");
+  src: url("../fonts/icon.eot?ea3yic#iefix") format("embedded-opentype"), url("../fonts/icon.ttf?ea3yic") format("truetype"), url("../fonts/icon.woff?ea3yic") format("woff"), url("../fonts/icon.svg?ea3yic#icon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-menu:before {
+  content: "\68"; }
+
+.icon-cross:before {
+  content: "\78"; }
+
+.icon-facebook2:before {
+  content: "\66"; }
+
+.icon-instagram:before {
+  content: "\69"; }
+
+.icon-twitter:before {
+  content: "\74"; }
+
+.icon-linkedin:before {
+  content: "\6c"; }
+
 /* ~-------------------------------------~*/
 /* ~-------------------------------------~*/
 /* ~-------------------------------------~*/
@@ -580,6 +618,65 @@ sup {
   .btn:active {
     top: 2px; }
 
+.sub-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  color: #1c1d1e;
+  cursor: pointer;
+  z-index: 10; }
+  .sub-nav .icon-hamburger {
+    display: block;
+    font-size: 35px;
+    padding: 10px;
+    -webkit-transition: all .4s ease-out;
+    transition: all .4s ease-out; }
+  .sub-nav ul {
+    display: none;
+    position: relative;
+    margin: 0;
+    padding: 0 0 20px 0;
+    list-style-type: none;
+    -webkit-transition: all 1s ease-out;
+    transition: all 1s ease-out;
+    overflow: hidden; }
+    .sub-nav ul li a {
+      position: relative;
+      display: block;
+      padding: 10px 30px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1c1d1e;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-align: center; }
+      .sub-nav ul li a:after {
+        content: "";
+        position: absolute;
+        top: 48px;
+        left: 0px;
+        width: 211px;
+        height: 1px;
+        background-color: #E4E4E4; }
+      .sub-nav ul li a:hover {
+        background-color: #1c1d1e;
+        color: #ffffff; }
+  .sub-nav:hover .icon-hamburger {
+    color: #4a4a4a; }
+  .sub-nav.active {
+    outline: none; }
+    .sub-nav.active .icon-hamburger {
+      position: relative;
+      left: 76px; }
+    .sub-nav.active ul {
+      display: block; }
+
+#nav--funk {
+  left: initial;
+  right: 0; }
+
 /* ~-------------------------------------~*/
 /* ~-------------------------------------~*/
 /* ~-------------------------------------~*/
@@ -789,9 +886,11 @@ a {
     position: absolute;
     right: 2px;
     top: 0px;
-    width: 30px;
-    height: 30px;
+    width: 42px;
+    height: 40px;
+    padding: 6px 13px 0px;
     background-color: #808080;
+    font-family: icon;
     font-size: 19px;
     font-weight: 700;
     color: #000000;

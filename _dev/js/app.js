@@ -14,6 +14,10 @@ var goToRight = $("#go-to-right");
 var goToLeft = $("#go-to-left");
 var intro = $("#introduction");
 var panelClose = $(".panel-close");
+var subNav = $(".sub-nav");
+var discoNav = $("#nav--disco");
+var funkNav = $("#nav--funk");
+var reset = $(".reset");
 
 /* ~-------------------------------------~*/
 /// Public Functions
@@ -33,6 +37,8 @@ function enterLeft() {
     left.css("width", "100%");
     right.css("width", "0%");
     left.find(lights).css("background-color", "rgba(0, 0, 0, 0.85)");
+    discoNav.fadeIn();
+    funkNav.fadeOut();
 
     // Add the initiated class after entry (tightens some loose ends)
     setTimeout(function() {
@@ -59,6 +65,8 @@ function enterRight() {
     // Expand the called side, retract the opposite
     right.css("width", "100%");
     left.css("width", "0%");
+    funkNav.fadeIn();
+    discoNav.fadeOut();
     right.find(lights).css("background-color", "rgba(0, 0, 0, 0.85)");
 
     // Add the initiated class after entry (tightens some loose ends)
@@ -159,6 +167,29 @@ function init() {
     // Handles modal close button
     panelClose.on("click", function() {
         intro.fadeOut();
+    });
+
+    // Page sub navigation
+    subNav.on("click", function() {
+        var t = $(this);
+
+        console.log(t);
+
+        if ( t.hasClass("active") ) {
+            t.removeClass("active");
+            console.log("click");
+        } else {
+            t.addClass("active");
+        }
+    })
+
+    // Page reload event
+    reset.on("click", function(e) {
+        e.preventDefault();
+
+        console.log("test");
+
+        location.reload();
     });
 
     // Element event listenters
