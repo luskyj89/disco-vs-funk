@@ -1,3 +1,7 @@
+/* ~-------------------------------------~*/
+/// Sub Nav Burger
+/* ~-------------------------------------~*/
+
 .sub-nav {
     display: none;
     position: fixed;
@@ -80,6 +84,54 @@
 }
 
 #nav--funk {
+    left: initial;
+    right: 0;
+}
+
+/* ~-------------------------------------~*/
+/// BG Sliders
+/* ~-------------------------------------~*/
+
+.left-bg-slider, .right-bg-slider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100vh;
+    z-index: 0;
+    transition: all 2s ease-out;
+    opacity: .15;
+
+    .bg-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-position: center top;
+        opacity: 0;
+        animation: bgSlider 30s linear infinite 0s;
+
+        &:nth-child(2) {
+            animation-delay: 10s;
+        }
+
+        &:nth-child(3) {
+            animation-delay: 20s;
+        }
+    }
+}
+
+@keyframes bgSlider {
+    0% { opacity: 0; animation-timing-function: ease-in; }
+    10% { opacity: 1; animation-timing-function: ease-out; }
+    20% { opacity: 1; }
+    40% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+.right-bg-slider {
     left: initial;
     right: 0;
 }

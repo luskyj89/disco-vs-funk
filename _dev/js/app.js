@@ -20,6 +20,8 @@ var discoNav = $("#nav--disco");
 var funkNav = $("#nav--funk");
 var reset = $(".reset");
 var conclusionBtn = $(".conclusion-btn");
+var leftSlider = $(".left-bg-slider");
+var rightSlider = $(".right-bg-slider");
 
 var pageHeight;
 
@@ -36,14 +38,16 @@ function enterLeft() {
     rightO.remove();
     vs.fadeOut();
     intro.fadeOut();
+    right.find("h1").css("opacity", 0);
 
     // Mark this side as read
     $('body').addClass("left--read");
 
     // Expand the called side, retract the opposite
     left.css("width", "100%");
+    leftSlider.css({"width": "100%", "opacity": .1});
     right.css("width", "0%");
-    left.find(lights).css("background-color", "rgba(0, 0, 0, 0.85)");
+    rightSlider.css("width", "0%");
     discoNav.fadeIn();
     funkNav.fadeOut();
 
@@ -68,16 +72,18 @@ function enterRight() {
     leftO.remove();
     vs.fadeOut();
     intro.fadeOut();
+    left.find("h1").css("opacity", 0);
 
     // Mark this side as read
     $('body').addClass("right--read");
 
     // Expand the called side, retract the opposite
     right.css("width", "100%");
+    rightSlider.css({"width": "100%", "opacity": .1});
     left.css("width", "0%");
+    leftSlider.css("width", "0%");
     funkNav.fadeIn();
     discoNav.fadeOut();
-    right.find(lights).css("background-color", "rgba(0, 0, 0, 0.85)");
 
     // Add the initiated class after entry (tightens some loose ends)
     setTimeout(function() {
@@ -103,9 +109,6 @@ function switchToRight() {
 
     left.find("h1").css("opacity", 0);
 
-    left.find(lights).css("opacity", 0);
-    right.find(lights).css("opacity", 1);
-
     // Trigger the entry function
     goToRight.fadeOut(500, function(){
         enterRight();
@@ -130,9 +133,6 @@ function switchToLeft() {
     right.find(following).css("opacity", 0);
 
     right.find("h1").css("opacity", 0);
-
-    right.find(lights).css("opacity", 0);
-    left.find(lights).css("opacity", 1);
 
     // Trigger the entry function
     goToLeft.fadeOut(500, function(){
@@ -170,17 +170,29 @@ function init() {
     // Hover states that rely on the intro listener elements
     leftO.hover( function() {
         left.css("width", "60%");
+        leftSlider.css({"width": "60%", "opacity": .7});
+        right.css("width", "40%");
+        rightSlider.css("width", "40%");
         left.find(lights).css("background-color", "rgba(0, 0, 0, 0.3)");
     }, function() {
         left.css("width", "50%");
+        right.css("width", "50%");
+        leftSlider.css({"width": "50%", "opacity": .15});
+        rightSlider.css("width", "50%");
         left.find(lights).css("background-color", "rgba(0, 0, 0, 0.8)");
     });
 
     rightO.hover( function() {
         right.css("width", "60%");
+        rightSlider.css({"width": "60%", "opacity": .7});
+        left.css("width", "40%");
+        leftSlider.css("width", "40%");
         right.find(lights).css("background-color", "rgba(0, 0, 0, 0.3)");
     }, function() {
         right.css("width", "50%");
+        left.css("width", "50%");
+        rightSlider.css({"width": "50%", "opacity": .15});
+        leftSlider.css("width", "50%");
         right.find(lights).css("background-color", "rgba(0, 0, 0, 0.8)");
     });
 
