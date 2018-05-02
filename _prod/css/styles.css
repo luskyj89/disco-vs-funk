@@ -65,7 +65,8 @@
   background-color: #ffffff;
   color: #1c1d1e;
   cursor: pointer;
-  z-index: 10; }
+  z-index: 10;
+  outline: none; }
   .sub-nav .icon-hamburger {
     display: block;
     font-size: 35px;
