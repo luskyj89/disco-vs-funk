@@ -13,11 +13,15 @@ var vs = $(".vs");
 var goToRight = $("#go-to-right");
 var goToLeft = $("#go-to-left");
 var intro = $("#introduction");
+var conclusion = $("#conclusion");
 var panelClose = $(".panel-close");
 var subNav = $(".sub-nav");
 var discoNav = $("#nav--disco");
 var funkNav = $("#nav--funk");
 var reset = $(".reset");
+var conclusionBtn = $(".conclusion-btn");
+
+var pageHeight;
 
 /* ~-------------------------------------~*/
 /// Public Functions
@@ -32,6 +36,9 @@ function enterLeft() {
     rightO.remove();
     vs.fadeOut();
     intro.fadeOut();
+
+    // Mark this side as read
+    $('body').addClass("left--read");
 
     // Expand the called side, retract the opposite
     left.css("width", "100%");
@@ -61,6 +68,9 @@ function enterRight() {
     leftO.remove();
     vs.fadeOut();
     intro.fadeOut();
+
+    // Mark this side as read
+    $('body').addClass("right--read");
 
     // Expand the called side, retract the opposite
     right.css("width", "100%");
@@ -137,6 +147,16 @@ function switchToLeft() {
 
 }
 
+// Handles the conclusion modal
+function showConclusion() {
+
+    $("body").addClass("concluded-once");
+
+    conclusion.fadeIn();
+
+}
+
+
 /* ~-------------------------------------~*/
 /// Init
 /* ~-------------------------------------~*/
@@ -167,6 +187,7 @@ function init() {
     // Handles modal close button
     panelClose.on("click", function() {
         intro.fadeOut();
+        conclusion.fadeOut();
     });
 
     // Page sub navigation
@@ -199,6 +220,11 @@ function init() {
     goToRight.on("click", switchToRight);
     goToLeft.on("click", switchToLeft);
 
+    conclusionBtn.on("click", function(e) {
+        e.preventDefault();
+        showConclusion();
+    })
+
 
 }
 
@@ -221,5 +247,27 @@ $(document).ready(function(){
         }
       }
     });
+
+});
+
+$(window).scroll( function() {
+    var pageHeight = $( document ).height();
+    var calcBottom = $(window).scrollTop() + $(window).outerHeight();
+
+    console.log( pageHeight, $(window).scrollTop(), $(window).outerHeight() );
+
+    if (calcBottom == pageHeight) {
+       // Fires when scrolled to the bottom
+       console.log("bottomed");
+
+       if ( $("body").hasClass("right--read") && $("body").hasClass("left--read") ) {
+
+           if ( $("body").hasClass("concluded-once") ) {
+               // Do nothing
+           } else {
+               showConclusion();
+           }
+       }
+    }
 
 });

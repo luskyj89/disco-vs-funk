@@ -238,8 +238,8 @@ a {
     }
 }
 
-#introduction {
-    position: absolute;
+#introduction, #conclusion {
+    position: fixed;
     bottom: 50px;
     left: 50%;
     margin-left: $w / -2;
@@ -256,7 +256,7 @@ a {
 
     .wrapping {
         padding: $gutter-md 40px;
-        background-color: rgba(0, 0, 0, 0.75);
+        background-color: rgba(0, 0, 0, 0.85);
     }
 
     .simplebar-scrollbar {
@@ -297,6 +297,10 @@ a {
             background-color: $white;
         }
     }
+}
+
+#conclusion {
+    display: none;
 }
 
 .switch-sides {

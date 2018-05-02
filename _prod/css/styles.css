@@ -855,8 +855,8 @@ a {
     .vs {
       display: none; } }
 
-#introduction {
-  position: absolute;
+#introduction, #conclusion {
+  position: fixed;
   bottom: 50px;
   left: 50%;
   margin-left: -450px;
@@ -865,23 +865,23 @@ a {
   z-index: 1001;
   overflow-y: auto; }
   @media all and (max-width: 900px) {
-    #introduction {
+    #introduction, #conclusion {
       left: 0;
       width: 100%;
       margin-left: 0; } }
-  #introduction .wrapping {
+  #introduction .wrapping, #conclusion .wrapping {
     padding: 20px 40px;
-    background-color: rgba(0, 0, 0, 0.75); }
-  #introduction .simplebar-scrollbar:before {
+    background-color: rgba(0, 0, 0, 0.85); }
+  #introduction .simplebar-scrollbar:before, #conclusion .simplebar-scrollbar:before {
     background: #ffffff;
     border-radius: 0; }
-  #introduction h2 {
+  #introduction h2, #conclusion h2 {
     margin-bottom: 20px;
     font-size: 30px;
     line-height: 24px; }
-    #introduction h2 span {
+    #introduction h2 span, #conclusion h2 span {
       font-size: 18px; }
-  #introduction .panel-close {
+  #introduction .panel-close, #conclusion .panel-close {
     display: block;
     position: absolute;
     right: 2px;
@@ -897,8 +897,11 @@ a {
     text-align: center;
     z-index: 1002;
     cursor: pointer; }
-    #introduction .panel-close:hover {
+    #introduction .panel-close:hover, #conclusion .panel-close:hover {
       background-color: #ffffff; }
+
+#conclusion {
+  display: none; }
 
 .switch-sides {
   display: none;
